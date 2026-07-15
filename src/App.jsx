@@ -13,22 +13,16 @@ function App() {
     website: "",
   })
 
-  const [ professionalSummary, setProfessionalSummary] = useState("Dedicated and results-driven Fullstack Web Developer with a passion for creating seamless user experiences and robust back-end systems. Proven ability to deliver high-quality web applications using modern frameworks and best practices. Seeking to leverage my technical expertise to drive innovation in a dynamic team environment.")
+  const [ professionalSummary, setProfessionalSummary] = useState("")
 
   const [ skills, setSkills ] = useState(["HTML", "CSS", "JAVASCRIPT"])
 
   const [ education, setEducation ] = useState([
     {
-      degree: "Diploma in Engineering",
-      institute: "Munshiganj Polytechnic Institute",
-      startYear: "2023",
-      endYear: "2027",
-    },
-    {
-      degree: "Diploma in Engineering",
-      institute: "Munshiganj Polytechnic Institute",
-      startYear: "2023",
-      endYear: "2027",
+      degree: "BSc in CSE",
+      institute: "BRAC University",
+      startYear: "2020",
+      endYear: "2024",
     }
   ])
 
@@ -37,16 +31,9 @@ function App() {
       position: "Front-end Developer",
       company: "Unisoft Ltd", 
       description: "Developed and maintained user-facing features using modern React and Vue frameworks.",
-      startYear: "2020",
-      endYear: "2023",
+      startYear: "2024",
+      endYear: "2026",
     },
-    {
-      position: "Front-end Developer",
-      company: "Unisoft Ltd", 
-      description: "Developed and maintained user-facing features using modern React and Vue frameworks.",
-      startYear: "2020",
-      endYear: "2023",
-    }
   ])
 
   return (

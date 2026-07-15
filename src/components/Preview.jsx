@@ -20,29 +20,29 @@ function Preview({ personalInfo, professionalSummary, skills, education, experie
 
                 {/*--- Header Section ---*/}
                 <section className="flex flex-col items-center mb-4">
-                    <h2 className="text-center text-3xl font-semibold uppercase tracking-wide">
+                    <h2 className="text-center text-3xl font-bold uppercase tracking-wide">
                         {personalInfo.fullName || "Your Full Name"}
                     </h2>
-                    <span className="text-lg font-medium mb-3">{personalInfo.jobTitle || "Your Job Title"}</span>
+                    <span className="text-lg font-semibold mb-3">{personalInfo.jobTitle || "Your Job Title"}</span>
                     <div className="flex justify-center gap-x-4 flex-wrap">
-                        <span className='flex items-center gap-2'>
+                        <span className='flex items-center gap-1'>
                             <Mail size={20} />
-                            <span>{personalInfo.email || "demomail@example.com"}</span>
+                            <span>{personalInfo.email || "demo@example.com"}</span>
                         </span>
-                        <span className='flex items-center gap-2'>
+                        <span className='flex items-center gap-1'>
                             <Phone size={20} />
-                            <span>{personalInfo.phone || "+880 19727-27460"}</span>
+                            <span>{personalInfo.phone || "+880 1911-11111"}</span>
                         </span>
-                        <span className='flex items-center gap-2'>
+                        <span className='flex items-center gap-1'>
                             <Globe size={20} />
-                            <span>{personalInfo.website || "your_username.com"}</span>
+                            <span>{personalInfo.website || "username.com"}</span>
                         </span>
                     </div>
                 </section>
 
                 {/* --- Professional summury section --- */}
                 <Section name={"professional summary"}>
-                    <p className='text-base/relaxed'>{professionalSummary}</p>
+                    <p className='text-base/relaxed'>{professionalSummary || "Summarize your career highlights, key expertise, and professional goals here in 2–3 brief sentences. Focus on how you add value."}</p>
                 </Section>
 
                 {/* --- Skills Section --- */}
