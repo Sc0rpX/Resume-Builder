@@ -42,7 +42,7 @@ function Preview({ personalInfo, professionalSummary, skills, education, experie
 
                 {/* --- Professional summury section --- */}
                 <Section name={"professional summary"}>
-                    <p className='text-base/relaxed'>{professionalSummary || "Summarize your career highlights, key expertise, and professional goals here in 2–3 brief sentences. Focus on how you add value."}</p>
+                    <p className='text-base/relaxed'>{professionalSummary}</p>
                 </Section>
 
                 {/* --- Skills Section --- */}
