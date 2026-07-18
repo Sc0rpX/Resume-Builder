@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ChevronDown, ChevronUp, Download, User, Contact, FileText, Lightbulb, SquarePen, Trash2, Plus } from "lucide-react";
+import { ChevronDown, ChevronUp, Download, User, Contact, FileText, Lightbulb, SquarePen, Trash2, Plus, X, Save } from "lucide-react";
 import Button from "./Button";
 
 function FormInput({ type="text", label, name, value, onChange }) {
@@ -58,6 +58,9 @@ function Accordion({title, icon, children}) {
 }
 
 function Editor({ personalInfo, setPersonalInfo, professionalSummary, setProfessionalSummary, skills, setSkills, education, setEducation, experience, setExperience }) {
+    // Skills States
+    const [ isAddingSkill, setIsAddingSkill ] = useState(false)
+    const [ newSkill, setNewSkill ] = useState("")
 
     const handlePersonalInfoChange = (e) => {
         const { name, value } = e.target;
@@ -72,6 +75,19 @@ function Editor({ personalInfo, setPersonalInfo, professionalSummary, setProfess
         const { value } = e.target;
 
         setProfessionalSummary(value)
+    }
+
+    const handleSaveSkill = () => {
+        if(newSkill.trim !== "") {
+            setSkills([...skills, newSkill]);
+            setNewSkill("");
+            setIsAddingSkill(false);
+        }
+    }
+
+    const handleCancelSkill = () => {
+        setNewSkill("")
+        setIsAddingSkill(false)
     }
 
     return (
@@ -151,9 +167,29 @@ function Editor({ personalInfo, setPersonalInfo, professionalSummary, setProfess
                         })
                     }
 
-                    <div className="flex justify-end mt-4">
-                        <Button text={"Add Skill"} icon={<Plus/>} variant={"primary"} />
-                    </div>
+                    {
+                        isAddingSkill ? (
+                            <div>
+                                <FormInput 
+                                    label={"New Skill"}
+                                    name={"newSkill"}
+                                    value={newSkill}
+                                    onChange={(e) => setNewSkill(e.target.value)}
+                                />
+
+                                <div className="flex justify-end gap-3 mt-4">
+                                    <Button text={"Cancel"} icon={<X size={18}/>} variant={"secondary"} onClick={handleCancelSkill} />
+                                    <Button text={"Save"} icon={<Save size={18}/>} variant={"primary"} onClick={handleSaveSkill} />
+                                </div>
+                            </div>
+                        ) : (
+                            <div className="flex justify-end mt-4">
+                                <Button text={"Add Skill"} icon={<Plus/>} variant={"primary"} onClick={() => setIsAddingSkill(true)}/>
+                            </div>
+                        )
+                    }
+
+                    
                 </Accordion>
             </div>
             <div className="flex gap-4">
