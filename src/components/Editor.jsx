@@ -90,6 +90,10 @@ function Editor({ personalInfo, setPersonalInfo, professionalSummary, setProfess
         setIsAddingSkill(false)
     }
 
+    const handleDeleteSkill = (indexToDelete) => {
+        setSkills(skills.filter((_, index) => index !== indexToDelete));
+    }
+
     return (
         <div className="w-1/4 overflow-y-auto p-8 flex flex-col gap-8">
             <h1 className="font-heading text-2xl font-semibold">Resume Contents:</h1>
@@ -154,13 +158,13 @@ function Editor({ personalInfo, setPersonalInfo, professionalSummary, setProfess
                     isList={true}
                 >
                     {
-                        skills.map((skill) => {
+                        skills.map((skill, index) => {
                             return (
-                                <div className="flex justify-between items-center" key={skill}>
+                                <div className="flex justify-between items-center" key={index}>
                                     <span>{skill}</span>
                                     <div className="flex">
                                         <Button icon={<SquarePen size={20}/>} variant={"ghost"}/>
-                                        <Button icon={<Trash2  size={20}/>} variant={"ghost"}/>
+                                        <Button icon={<Trash2  size={20}/>} variant={"ghost"} onClick={() => handleDeleteSkill(index)}/>
                                     </div>
                                 </div>
                             )
