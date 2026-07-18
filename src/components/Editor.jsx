@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ChevronDown, ChevronUp, Download, User, Contact, FileText } from "lucide-react";
+import { ChevronDown, ChevronUp, Download, User, Contact, FileText, Lightbulb, SquarePen, Trash2, Plus } from "lucide-react";
 import Button from "./Button";
 
 function FormInput({ type="text", label, name, value, onChange }) {
@@ -29,7 +29,7 @@ function FormInput({ type="text", label, name, value, onChange }) {
     }
 }
 
-function Accordion({title, icon, children}) {
+function Accordion({title, icon, isList=false, children}) {
     const [ isOpen, setIsOpen ] = useState(false);
 
     function toggleAccordion() {
@@ -48,8 +48,11 @@ function Accordion({title, icon, children}) {
             </div>
             {
                 isOpen && (
-                    <div className="p-6 flex flex-col gap-4 border-l-4 border-blue-800">
+                    <div className="p-6 flex flex-col gap-2 border-l-4 border-blue-800">
                         {children}
+                        {isList && <div className="flex justify-end mt-4">
+                        <Button text={"Add Skill"} icon={<Plus/>} variant={"primary"} />
+                    </div>}
                     </div>
                 )
             }
@@ -129,6 +132,27 @@ function Editor({ personalInfo, setPersonalInfo, professionalSummary, setProfess
                         value={professionalSummary}
                         onChange={handleProSummaryChange}
                     />
+                </Accordion>
+
+                {/* Skills Accordion */}
+                <Accordion
+                    title={"Skills"}
+                    icon={<Lightbulb/>}
+                    isList={true}
+                >
+                    {
+                        skills.map((skill) => {
+                            return (
+                                <div className="flex justify-between items-center" key={skill}>
+                                    <span>{skill}</span>
+                                    <div className="flex">
+                                        <Button icon={<SquarePen size={20}/>} variant={"ghost"}/>
+                                        <Button icon={<Trash2  size={20}/>} variant={"ghost"}/>
+                                    </div>
+                                </div>
+                            )
+                        })
+                    }
                 </Accordion>
             </div>
             <div className="flex gap-4">
