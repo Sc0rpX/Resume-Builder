@@ -61,6 +61,7 @@ function Editor({ personalInfo, setPersonalInfo, professionalSummary, setProfess
     // Skills States
     const [ isAddingSkill, setIsAddingSkill ] = useState(false)
     const [ newSkill, setNewSkill ] = useState("")
+    const [ editingSkillIndex, setEditingSkillIndex ] = useState(null)
 
     const handlePersonalInfoChange = (e) => {
         const { name, value } = e.target;
@@ -79,15 +80,30 @@ function Editor({ personalInfo, setPersonalInfo, professionalSummary, setProfess
 
     const handleSaveSkill = () => {
         if(newSkill.trim !== "") {
-            setSkills([...skills, newSkill]);
+            if(editingSkillIndex !== null) {
+                const updatedSkills = [...skills];
+                updatedSkills[editingSkillIndex] = newSkill;
+                setSkills(updatedSkills);
+            } else {
+                setSkills([...skills, newSkill]);
+            }
+
             setNewSkill("");
             setIsAddingSkill(false);
+            setEditingSkillIndex(null)
         }
     }
 
     const handleCancelSkill = () => {
         setNewSkill("")
         setIsAddingSkill(false)
+        setEditingSkillIndex(null)
+    }
+
+    const handleEditSkill = (index, currentSkillText) => {
+        setIsAddingSkill(true);
+        setNewSkill(currentSkillText);
+        setEditingSkillIndex(index);
     }
 
     const handleDeleteSkill = (indexToDelete) => {
@@ -163,7 +179,7 @@ function Editor({ personalInfo, setPersonalInfo, professionalSummary, setProfess
                                 <div className="flex justify-between items-center" key={index}>
                                     <span>{skill}</span>
                                     <div className="flex">
-                                        <Button icon={<SquarePen size={20}/>} variant={"ghost"}/>
+                                        <Button icon={<SquarePen size={20}/>} variant={"ghost"} onClick={() => handleEditSkill(index, skill)}/>
                                         <Button icon={<Trash2  size={20}/>} variant={"ghost"} onClick={() => handleDeleteSkill(index)}/>
                                     </div>
                                 </div>
