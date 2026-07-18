@@ -29,7 +29,7 @@ function FormInput({ type="text", label, name, value, onChange }) {
     }
 }
 
-function Accordion({title, icon, isList=false, children}) {
+function Accordion({title, icon, children}) {
     const [ isOpen, setIsOpen ] = useState(false);
 
     function toggleAccordion() {
@@ -50,9 +50,6 @@ function Accordion({title, icon, isList=false, children}) {
                 isOpen && (
                     <div className="p-6 flex flex-col gap-2 border-l-4 border-blue-800">
                         {children}
-                        {isList && <div className="flex justify-end mt-4">
-                        <Button text={"Add Skill"} icon={<Plus/>} variant={"primary"} />
-                    </div>}
                     </div>
                 )
             }
@@ -153,6 +150,10 @@ function Editor({ personalInfo, setPersonalInfo, professionalSummary, setProfess
                             )
                         })
                     }
+
+                    <div className="flex justify-end mt-4">
+                        <Button text={"Add Skill"} icon={<Plus/>} variant={"primary"} />
+                    </div>
                 </Accordion>
             </div>
             <div className="flex gap-4">
