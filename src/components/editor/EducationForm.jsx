@@ -45,6 +45,10 @@ export default function EducationForm({ education, setEducation }) {
         setIsAddingEducation(false);
     }
 
+    function handleDelete(indexToDelete) {
+        setEducation(education.filter((_, index) => index !== indexToDelete))
+    }
+
     return (
         <>
             {
@@ -54,7 +58,7 @@ export default function EducationForm({ education, setEducation }) {
                             <span>{degree.degree}</span>
                             <div className="flex">
                                 <Button icon={<SquarePen size={20}/>} variant={"ghost"} onClick={() => handleEditSkill(index, degree)}/>
-                                <Button icon={<Trash2  size={20}/>} variant={"ghost"} onClick={() => handleDeleteSkill(index)}/>
+                                <Button icon={<Trash2  size={20}/>} variant={"ghost"} onClick={() => handleDelete(index)}/>
                             </div>
                         </div>
                     )
