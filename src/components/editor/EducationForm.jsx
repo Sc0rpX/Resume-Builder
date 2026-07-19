@@ -11,6 +11,7 @@ export default function EducationForm({ education, setEducation }) {
         startYear: "",
         endYear: "",
     })
+    const [ editingIndex, setEditingIndex ] = useState(null);
 
     function handleFormInputChange(e) {
         const { name, value } = e.target;
@@ -29,24 +30,46 @@ export default function EducationForm({ education, setEducation }) {
             endYear: "",
         })
         setIsAddingEducation(false);
+        setEditingIndex(null);
     }
 
     function handleSave() {
-        setEducation([
-            ...education,
-            newEducation
-        ])
-        setNewEducation({
-            degree: "",
-            institute: "",
-            startYear: "",
-            endYear: "",
-        })
-        setIsAddingEducation(false);
+        if(newEducation.degree.trim !== ""){
+            if(editingIndex !== null) {
+                const updatedEducation = [...education];
+                updatedEducation[editingIndex] = newEducation;
+                setEducation(updatedEducation);
+            } else {
+                setEducation([
+                    ...education,
+                    newEducation
+                ])
+            }
+
+            setNewEducation({
+                degree: "",
+                institute: "",
+                startYear: "",
+                endYear: "",
+            })
+            setIsAddingEducation(false);
+            setEditingIndex(null);
+        }
     }
 
     function handleDelete(indexToDelete) {
         setEducation(education.filter((_, index) => index !== indexToDelete))
+    }
+
+    function handleEdit(degree, index) {
+        setIsAddingEducation(true);
+        setNewEducation({
+            degree: degree.degree,
+            institute: degree.institute,
+            startYear: degree.startYear,
+            endYear: degree.endYear
+        })
+        setEditingIndex(index);
     }
 
     return (
@@ -57,7 +80,7 @@ export default function EducationForm({ education, setEducation }) {
                         <div className="flex justify-between items-center" key={index}>
                             <span>{degree.degree}</span>
                             <div className="flex">
-                                <Button icon={<SquarePen size={20}/>} variant={"ghost"} onClick={() => handleEditSkill(index, degree)}/>
+                                <Button icon={<SquarePen size={20}/>} variant={"ghost"} onClick={() => handleEdit(degree, index)}/>
                                 <Button icon={<Trash2  size={20}/>} variant={"ghost"} onClick={() => handleDelete(index)}/>
                             </div>
                         </div>
