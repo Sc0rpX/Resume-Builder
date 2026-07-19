@@ -4,6 +4,7 @@ import Button from "../ui/Button";
 import FormInput from "../ui/FormInput";
 import Accordion from "../ui/Accordion";
 import PersonalInfoForm from "./PersonalInfoForm";
+import ProSummaryForm from "./ProSummaryForm";
 
 function Editor({ personalInfo, setPersonalInfo, professionalSummary, setProfessionalSummary, skills, setSkills, education, setEducation, experience, setExperience }) {
     // Skills States
@@ -11,12 +12,6 @@ function Editor({ personalInfo, setPersonalInfo, professionalSummary, setProfess
     const [ newSkill, setNewSkill ] = useState("")
     const [ editingSkillIndex, setEditingSkillIndex ] = useState(null)
 
-
-    const handleProSummaryChange = (e) => {
-        const { value } = e.target;
-
-        setProfessionalSummary(value)
-    }
 
     const handleSaveSkill = () => {
         if(newSkill.trim !== "") {
@@ -70,11 +65,9 @@ function Editor({ personalInfo, setPersonalInfo, professionalSummary, setProfess
                     title={"Professional Summary"} 
                     icon={<FileText/>}
                 >
-                    <FormInput 
-                        type="textarea"
-                        name="professionalSummary"
-                        value={professionalSummary}
-                        onChange={handleProSummaryChange}
+                    <ProSummaryForm
+                        professionalSummary={professionalSummary}
+                        setProfessionalSummary={setProfessionalSummary}
                     />
                 </Accordion>
 
