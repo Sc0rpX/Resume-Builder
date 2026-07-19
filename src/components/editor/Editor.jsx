@@ -3,6 +3,7 @@ import { Download, User, Contact, FileText, Lightbulb, SquarePen, Trash2, Plus, 
 import Button from "../ui/Button";
 import FormInput from "../ui/FormInput";
 import Accordion from "../ui/Accordion";
+import PersonalInfoForm from "./PersonalInfoForm";
 
 function Editor({ personalInfo, setPersonalInfo, professionalSummary, setProfessionalSummary, skills, setSkills, education, setEducation, experience, setExperience }) {
     // Skills States
@@ -10,14 +11,6 @@ function Editor({ personalInfo, setPersonalInfo, professionalSummary, setProfess
     const [ newSkill, setNewSkill ] = useState("")
     const [ editingSkillIndex, setEditingSkillIndex ] = useState(null)
 
-    const handlePersonalInfoChange = (e) => {
-        const { name, value } = e.target;
-
-        setPersonalInfo({
-            ...personalInfo, 
-            [name]: value
-        })
-    }
 
     const handleProSummaryChange = (e) => {
         const { value } = e.target;
@@ -66,38 +59,9 @@ function Editor({ personalInfo, setPersonalInfo, professionalSummary, setProfess
                     title={"Personal Information"}
                     icon={<User/>}
                 >
-                    <FormInput 
-                        label="Full Name" 
-                        name="fullName"
-                        value={personalInfo.fullName}
-                        onChange={handlePersonalInfoChange}
-                    />
-                    <FormInput 
-                        label="Job Title" 
-                        name="jobTitle"
-                        value={personalInfo.jobTitle}
-                        onChange={handlePersonalInfoChange}
-                    />
-                    <FormInput 
-                        type="email"
-                        label="Email" 
-                        name="email"
-                        value={personalInfo.email}
-                        onChange={handlePersonalInfoChange}
-                    />
-                    <FormInput 
-                        type="tel"
-                        label="Phone" 
-                        name="phone"
-                        value={personalInfo.phone}
-                        onChange={handlePersonalInfoChange}
-                    />
-                    <FormInput 
-                        type="url"
-                        label="Website URL" 
-                        name="website"
-                        value={personalInfo.website}
-                        onChange={handlePersonalInfoChange}
+                    <PersonalInfoForm 
+                        personalInfo={personalInfo}
+                        setPersonalInfo={setPersonalInfo}
                     />
                 </Accordion>
 
