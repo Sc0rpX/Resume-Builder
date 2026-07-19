@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import './App.css'
-import Editor from './components/Editor.jsx'
+import Editor from './components/editor/Editor.jsx'
 import Header from './components/Header.jsx'
 import Preview from './components/Preview.jsx'
 

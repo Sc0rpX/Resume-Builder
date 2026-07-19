@@ -1,61 +1,8 @@
 import { useState } from "react";
-import { ChevronDown, ChevronUp, Download, User, Contact, FileText, Lightbulb, SquarePen, Trash2, Plus, X, Save } from "lucide-react";
-import Button from "./Button";
-
-function FormInput({ type="text", label, name, value, onChange }) {
-    if(type === "textarea") {
-        return (
-            <textarea 
-                name={name} 
-                value={value} 
-                onChange={onChange}
-                rows={"4"}
-                className="p-3 border border-gray-700 rounded-sm"
-            ></textarea>
-        )
-    } else {
-        return (
-            <div className="flex flex-col gap-1">
-                <label htmlFor={name} className="text-sm font-semibold text-gray-600">{label}</label>
-                <input 
-                    type={type}
-                    name={name} 
-                    value={value} 
-                    onChange={onChange}
-                    className="p-3 border border-gray-700 rounded-sm" 
-                />
-            </div>
-        )
-    }
-}
-
-function Accordion({title, icon, children}) {
-    const [ isOpen, setIsOpen ] = useState(false);
-
-    function toggleAccordion() {
-        setIsOpen((prevIsOpen) => !prevIsOpen);
-    }
-
-    return (
-        <div className="border border-gray-200 rounded-lg">
-            <div className="flex justify-between items-center p-4 bg-gray-100 cursor-pointer" onClick={toggleAccordion}>
-                <div className="flex items-center gap-3">
-                    {icon}
-                    <h3 className="font-bold">{title}</h3>
-                </div>
-                { isOpen ? <ChevronUp /> : <ChevronDown />}
-                
-            </div>
-            {
-                isOpen && (
-                    <div className="p-6 flex flex-col gap-2 border-l-4 border-blue-800">
-                        {children}
-                    </div>
-                )
-            }
-        </div>
-    )
-}
+import { Download, User, Contact, FileText, Lightbulb, SquarePen, Trash2, Plus, X, Save } from "lucide-react";
+import Button from "../ui/Button";
+import FormInput from "../ui/FormInput";
+import Accordion from "../ui/Accordion";
 
 function Editor({ personalInfo, setPersonalInfo, professionalSummary, setProfessionalSummary, skills, setSkills, education, setEducation, experience, setExperience }) {
     // Skills States
