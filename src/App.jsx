@@ -47,7 +47,15 @@ function App() {
 
   const handlePrint = useReactToPrint({ 
     contentRef: componentRef,
-    documentTitle: `resume-of-${personalInfo.fullName.replaceAll(" ", "")}`
+    documentTitle: `resume-of-${personalInfo.fullName.replaceAll(" ", "")}`,
+    pageStyle: `
+      @media print {
+        @page {
+          size: A4 portrait;
+          margin: 0;
+        }
+      }
+    `,
    })
 
   return (
