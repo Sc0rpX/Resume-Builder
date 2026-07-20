@@ -53,7 +53,7 @@ function Editor({ personalInfo, setPersonalInfo, professionalSummary, setProfess
         <div className="h-full w-1/4 flex flex-col">
             <div className="h-full overflow-y-auto p-8 flex flex-col gap-8">
                 <h1 className="font-heading text-2xl font-semibold">Resume Contents:</h1>
-                <form className="flex flex-col gap-4">
+                <div className="flex flex-col gap-4">
                     {/* Personal informations accordion */}
                     <Accordion
                         title={"Personal Information"}
@@ -104,7 +104,7 @@ function Editor({ personalInfo, setPersonalInfo, professionalSummary, setProfess
                             setExperience={setExperience}
                         />
                     </Accordion>
-                </form>
+                </div>
             </div>
             <div className="bg-gray-50 p-6 border-t border-t-gray-300 flex gap-4 shadow-2xl">
                 <Button text={"Reset"} icon={<RotateCw size={18}/>} variant={"danger"} extraStyle={"w-full"} onClick={handleReset}/>
