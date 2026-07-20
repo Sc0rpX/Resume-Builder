@@ -11,12 +11,15 @@ function Section({ name, children }) {
     )
 }
 
-function Preview({ personalInfo, professionalSummary, skills, education, experience }) {
+function Preview({ personalInfo, professionalSummary, skills, education, experience, contentRef }) {
     return (
         <section className="flex-1 bg-gray-200 overflow-y-auto p-10 flex justify-center">
 
             {/*--- A4 Paper ---*/}
-            <div className="bg-white w-full max-w-[794px] min-h-[1123px] shadow-2xl p-16 border border-gray-200 flex flex-col gap-8">
+            <div 
+                ref={contentRef}
+                className="bg-white w-full max-w-[794px] min-h-[1123px] shadow-2xl p-16 border border-gray-200 flex flex-col gap-8"
+            >
 
                 {/*--- Header Section ---*/}
                 <section className="flex flex-col items-center mb-4">

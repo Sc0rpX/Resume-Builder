@@ -1,10 +1,17 @@
-import { useState } from 'react'
-import './App.css'
-import Editor from './components/editor/Editor.jsx'
-import Header from './components/Header.jsx'
-import Preview from './components/Preview.jsx'
+import { useState, useRef } from 'react';
+import { useReactToPrint } from 'react-to-print';
+import './App.css';
+import Editor from './components/editor/Editor.jsx';
+import Header from './components/Header.jsx';
+import Preview from './components/Preview.jsx';
 
 function App() {
+  const componentRef = useRef(null);
+
+  const handlePrint = useReactToPrint({ 
+    contentRef: () => componentRef
+   })
+
   const [personalInfo, setPersonalInfo] = useState({
     fullName: "",
     jobTitle: "",
@@ -44,7 +51,7 @@ function App() {
 
   return (
     <div className='flex flex-col overflow-hidden w-screen h-screen'>
-      <Header />
+      <Header onPrint={handlePrint} />
       <div className='flex flex-1 overflow-hidden'>
         <Editor 
           personalInfo={personalInfo} 
@@ -65,6 +72,7 @@ function App() {
           skills={skills} 
           education={education} 
           experience={experience} 
+          contentRef={componentRef}
         />
       </div>
     </div>

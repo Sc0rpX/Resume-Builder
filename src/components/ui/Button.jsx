@@ -9,7 +9,7 @@ function Button({ text, icon, variant, extraStyle, onClick }) {
     }
 
     return (
-        <button className={`${baseStyle} ${colorVariants[variant]} ${paddingStyle} ${extraStyle}`} onClick={onClick}>
+        <button className={`${baseStyle} ${colorVariants[variant]} ${paddingStyle} ${extraStyle}`} onClick={() => onClick && onClick()}>
             {icon}
             {text}
         </button>
