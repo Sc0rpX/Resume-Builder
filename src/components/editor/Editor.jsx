@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Download, User, Contact, FileText, Lightbulb, GraduationCap } from "lucide-react";
+import { Download, User, Contact, FileText, Lightbulb, GraduationCap, BriefcaseBusiness } from "lucide-react";
 import Button from "../ui/Button";
 import FormInput from "../ui/FormInput";
 import Accordion from "../ui/Accordion";
@@ -7,6 +7,7 @@ import PersonalInfoForm from "./PersonalInfoForm";
 import ProSummaryForm from "./ProSummaryForm";
 import SkillsForm from "./SkillsForm";
 import EducationForm from "./EducationForm";
+import ExperienceForm from "./ExperienceForm";
 
 function Editor({ personalInfo, setPersonalInfo, professionalSummary, setProfessionalSummary, skills, setSkills, education, setEducation, experience, setExperience }) {
 
@@ -55,6 +56,15 @@ function Editor({ personalInfo, setPersonalInfo, professionalSummary, setProfess
                     <EducationForm
                         education={education}
                         setEducation={setEducation}
+                    />
+                </Accordion>
+                <Accordion
+                    title={"Experience"}
+                    icon={<BriefcaseBusiness/>}
+                >
+                    <ExperienceForm
+                        experience={experience}
+                        setExperience={setExperience}
                     />
                 </Accordion>
             </div>
