@@ -8,10 +8,6 @@ import Preview from './components/Preview.jsx';
 function App() {
   const componentRef = useRef(null);
 
-  const handlePrint = useReactToPrint({ 
-    contentRef: () => componentRef
-   })
-
   const [personalInfo, setPersonalInfo] = useState({
     fullName: "",
     jobTitle: "",
@@ -48,6 +44,11 @@ function App() {
       endYear: "2026",
     },
   ])
+
+  const handlePrint = useReactToPrint({ 
+    contentRef: componentRef,
+    documentTitle: `resume-of-${personalInfo.fullName.replaceAll(" ", "")}`
+   })
 
   return (
     <div className='flex flex-col overflow-hidden w-screen h-screen'>
