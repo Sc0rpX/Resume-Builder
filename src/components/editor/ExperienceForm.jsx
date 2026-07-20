@@ -12,6 +12,7 @@ export default function ExperienceForm({ experience, setExperience }) {
         startYear: "",
         endYear: "",
     })
+    const [ editingIndex, setEditingIndex ] = useState(null)
 
     function handleFormInputChange(e) {
         const { name, value } = e.target;
@@ -23,18 +24,27 @@ export default function ExperienceForm({ experience, setExperience }) {
     }
 
     function handleSave() {
-        setExperience([
-            ...experience,
-            newExp
-        ])
-        setNewExp({
-            position: "",
-            company: "",
-            description: "",
-            startYear: "",
-            endYear: "",
-        })
-        setIsAddingExp(false)
+        if(newExp.position.trim() !== "") {
+            if(editingIndex !== null) {
+                const updatedExp = [...experience];
+                updatedExp[editingIndex] = newExp;
+                setExperience(updatedExp);
+            } else {
+                setExperience([
+                    ...experience,
+                    newExp
+                ])
+            }
+            setNewExp({
+                position: "",
+                company: "",
+                description: "",
+                startYear: "",
+                endYear: "",
+            })
+            setIsAddingExp(false)
+            setEditingIndex(null)
+        }
     }
 
     function handleCancel() {
@@ -45,11 +55,24 @@ export default function ExperienceForm({ experience, setExperience }) {
             startYear: "",
             endYear: "",
         })
-        setIsAddingExp(false)
+        setIsAddingExp(false);
+        setEditingIndex(null);
     }
 
     function handleDelete(indexToDelete) {
         setExperience(experience.filter((_, index) => index !== indexToDelete))
+    }
+
+    function handleEdit(exp, index) {
+        setIsAddingExp(true);
+        setNewExp({
+            position: exp.position,
+            company: exp.company,
+            description: exp.description,
+            startYear: exp.startYear,
+            endYear: exp.endYear,
+        })
+        setEditingIndex(index);
     }
 
     return (
@@ -60,7 +83,7 @@ export default function ExperienceForm({ experience, setExperience }) {
                         <div className="flex justify-between items-center" key={index}>
                             <span>{exp.position}</span>
                             <div className="flex">
-                                <Button icon={<SquarePen size={20}/>} variant={"ghost"} onClick={() => handleEdit(degree, index)}/>
+                                <Button icon={<SquarePen size={20}/>} variant={"ghost"} onClick={() => handleEdit(exp, index)}/>
                                 <Button icon={<Trash2  size={20}/>} variant={"ghost"} onClick={() => handleDelete(index)}/>
                             </div>
                         </div>
