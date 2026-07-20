@@ -23,6 +23,12 @@ function App() {
       institute: "BRAC University",
       startYear: "2020",
       endYear: "2024",
+    },
+    {
+      degree: "Higher School Certificate",
+      institute: "Notre Dame",
+      startYear: "2021",
+      endYear: "2023"
     }
   ])
 
