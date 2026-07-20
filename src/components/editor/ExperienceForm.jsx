@@ -48,6 +48,10 @@ export default function ExperienceForm({ experience, setExperience }) {
         setIsAddingExp(false)
     }
 
+    function handleDelete(indexToDelete) {
+        setExperience(experience.filter((_, index) => index !== indexToDelete))
+    }
+
     return (
         <>
             {
