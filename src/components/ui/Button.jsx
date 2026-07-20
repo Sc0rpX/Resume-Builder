@@ -1,4 +1,4 @@
-function Button({ text, icon, variant, onClick }) {
+function Button({ text, icon, variant, extraStyle, onClick }) {
     const baseStyle = "flex justify-center items-center gap-2 font-medium text-sm rounded-sm cursor-pointer";
     const paddingStyle = text ? "px-6 py-2" : "p-2";
     const colorVariants = {
@@ -9,7 +9,7 @@ function Button({ text, icon, variant, onClick }) {
     }
 
     return (
-        <button className={`${baseStyle} ${colorVariants[variant]} ${paddingStyle}`} onClick={onClick}>
+        <button className={`${baseStyle} ${colorVariants[variant]} ${paddingStyle} ${extraStyle}`} onClick={onClick}>
             {icon}
             {text}
         </button>
