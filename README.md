@@ -1,16 +1,29 @@
-# React + Vite
+# 📄 React Resume Builder (Practice Project)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**🔗 [Click here to view the Live Preview!](https://resume-builder-mauve-omega-62.vercel.app/)** 
 
-Currently, two official plugins are available:
+This is my first React project! I built this application to practice foundational React concepts, component architecture, and state management. 
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+It is a real-time resume builder where users can fill out their details in an accordion-style editor and instantly see a live preview of their A4-formatted resume, which can then be exported to a PDF.
 
-## React Compiler
+## 🧠 React Concepts Practiced
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Building this project helped me get hands-on experience with:
+* **Component Architecture:** Breaking down a UI into reusable, modular pieces (like `<Header>`, `<Editor>`, and `<Preview>`).
+* **State Management (`useState`):** Managing complex state objects and updating arrays dynamically (for the Skills, Education, and Experience sections).
+* **Controlled Components:** Tying HTML form inputs directly to React state.
+* **Third-Party Hooks:** Integrating external libraries like `react-to-print` to interact with the browser's native print API.
 
-## Expanding the ESLint configuration
+## ✨ Project Features
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+* **Live Two-Way Binding:** The preview screen updates instantly on every keystroke.
+* **Dynamic Lists:** Users can add, edit, and delete items from their Skills, Education, and Employment histories.
+* **Clean UI:** Implemented a collapsible accordion menu for the editor to keep the workspace uncluttered.
+* **PDF Export:** One-click download to a perfectly formatted A4 PDF using the browser's print engine.
+
+## 🛠️ Tech Stack
+
+* **[React](https://react.dev/)**
+* **[Tailwind CSS](https://tailwindcss.com/)**
+* **[Lucide React](https://lucide.dev/)**
+* **[react-to-print](https://www.npmjs.com/package/react-to-print)**
