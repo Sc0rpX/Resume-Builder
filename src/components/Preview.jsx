@@ -18,7 +18,7 @@ function Preview({ personalInfo, professionalSummary, skills, education, experie
             {/*--- A4 Paper ---*/}
             <div 
                 ref={contentRef}
-                className="bg-white w-full max-w-[794px] min-h-[1123px] shadow-2xl p-16 border border-gray-200 flex flex-col gap-8"
+                className="bg-white w-full max-w-198.5 min-h-280.75 shadow-2xl p-16 border border-gray-200 flex flex-col gap-8"
             >
 
                 {/*--- Header Section ---*/}
@@ -69,7 +69,7 @@ function Preview({ personalInfo, professionalSummary, skills, education, experie
                             {
                                 education.map((item, index) => {
                                     return (
-                                        <div>
+                                        <div key={index}>
                                             <div className='flex justify-between items-center'>
                                                 <span className='text-xl font-bold'>{item.degree}</span>
                                                 <span>{`${item.startYear} - ${item.endYear}`}</span>
@@ -88,7 +88,7 @@ function Preview({ personalInfo, professionalSummary, skills, education, experie
                             {
                                 experience.map((item, index) => {
                                     return (
-                                        <div>
+                                        <div key={index}>
                                             <div className='flex justify-between items-center'>
                                                 <span className='text-xl font-bold'>{item.position}</span>
                                                 <span>{`${item.startYear} - ${item.endYear}`}</span>
